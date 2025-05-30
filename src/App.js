@@ -1,44 +1,13 @@
 // Importación de librerías necesarias y componentes
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Navbar, Nav, Container, Form, Button } from 'react-bootstrap';
+import { Routes, Route, Link } from 'react-router-dom';
+import { Navbar, Nav, Container, Card, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 // Importación de componentes externos
 import Login from './components/Login';
 import Register from './components/Register';
-
-function App() {
-  return (
-    // Envolvemos toda la aplicación en el Router para usar rutas
-    <Router>
-      {/* Barra de navegación superior */}
-      <Navbar bg="primary" variant="dark" expand="lg" sticky="top">
-        <Container>
-          <Navbar.Brand as={Link} to="/">One Click Service</Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse>
-            <Nav className="ms-auto">
-              <Nav.Link as={Link} to="/login">Iniciar sesión</Nav.Link>
-              <Nav.Link as={Link} to="/register">Registrarse</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
-      {/* Rutas de la aplicación */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </Router>
-  );
-}
 
 // Componente de la página principal (Home)
 function Home() {
@@ -89,7 +58,6 @@ function Home() {
       {/* Sección con tarjetas informativas */}
       <Container className="my-5">
         <Row>
-          {/* Proveedor del mes */}
           <Col md={3}>
             <Card>
               <Card.Img
@@ -104,7 +72,6 @@ function Home() {
             </Card>
           </Col>
 
-          {/* Cliente del mes */}
           <Col md={3}>
             <Card>
               <Card.Img
@@ -119,7 +86,6 @@ function Home() {
             </Card>
           </Col>
 
-          {/* Promociones */}
           <Col md={3}>
             <Card>
               <Card.Img
@@ -134,7 +100,6 @@ function Home() {
             </Card>
           </Col>
 
-          {/* Premios */}
           <Col md={3}>
             <Card>
               <Card.Img
@@ -154,4 +119,34 @@ function Home() {
   );
 }
 
+// Componente principal de la aplicación
+function App() {
+  return (
+    <>
+      <Navbar bg="primary" variant="dark" expand="lg" sticky="top">
+        <Container>
+          <Navbar.Brand as={Link} to="/">One Click Service</Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse>
+            <Nav className="ms-auto">
+              <Nav.Link as={Link} to="/login">Iniciar sesión</Nav.Link>
+              <Nav.Link as={Link} to="/register">Registrarse</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      {/* Rutas de la aplicación */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </>
+  );
+}
+
 export default App;
+
+
+
